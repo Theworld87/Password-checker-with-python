@@ -1,5 +1,4 @@
 """
-A response from a website with code 400 is not good. Code 200 is what is needed.
 Use a hash generator with API. This hides passwords
 You only need the first five Hashed code numbers. This is more secure way of protecting user passwords.
 """
@@ -33,7 +32,6 @@ def pwn_api_check(password):
     # Check if password exists in api response.
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()  # Encodes and converts to hash
     first5_char, remaining_chars = sha1password[:5], sha1password[5:]
-    # Stores the first 5 hashed chars in one variable and the rest in another.
     response = request_api_data(first5_char)
     return get_password_leaks_count(response, remaining_chars)
 
@@ -49,5 +47,5 @@ def main(args):
 
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))  # Exits the program 
-    # Use parameters in the configuration to set a password.
+    sys.exit(main(sys.argv[1:]))  
+    # Exits the program 
